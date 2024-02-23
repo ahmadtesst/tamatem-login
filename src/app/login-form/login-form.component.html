@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+  <img class="logo" src="https://avatars.githubusercontent.com/u/124091983" alt="tamatem_logo">
+
+  <mat-form-field required appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" name="email">
+    <mat-error *ngIf="loginForm?.get('email')?.hasError('required')">This field is required</mat-error>
+    <mat-error *ngIf="loginForm?.get('email')?.hasError('email')">Invalid Email</mat-error>
+  </mat-form-field>
+
+  <mat-form-field required appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="password" name="password">
+    <mat-error *ngIf="loginForm?.get('password')?.hasError('required')">This field is required</mat-error>
+    <mat-error *ngIf="loginForm?.get('password')?.hasError('minlength')">Password is too short!</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="warn" type="submit">
+    Login
+  </button>
+</form>
